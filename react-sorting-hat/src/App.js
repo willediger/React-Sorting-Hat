@@ -82,7 +82,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      displayQuestions: false,
+      displayQuestions: true,
       answers: [
         {
           questionNum: 1,

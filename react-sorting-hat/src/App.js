@@ -26,7 +26,7 @@ const houses = [
   },
   {
     houseName: 'Slytherin',
-    attributes: ['ambition', 'cunning', 'resourcefulness', 'achievement', 'determination'],
+    attributes: ['ambition', 'cunning', 'resourcefulness', 'achievement', 'self-preservation'],
     animal: 'serpent',
     colors: ['emerald green', 'silver'],
     famousMembers: ['Salazar Slytherin', 'Merlin', 'Severus Snape', 'Phineas Nigellus Black', 'Tom Riddle', 'Horace Slughorn']
@@ -37,6 +37,11 @@ const attrQuestion = 'Which of these attributes best describes you?';
 const animalQuestion = 'Which animal best describes you?';
 
 const questions = [
+  {
+    questionNum: 0,
+    question: attrQuestion,
+    choices: []
+  },
   {
     questionNum: 1,
     question: attrQuestion,
@@ -59,11 +64,6 @@ const questions = [
   },
   {
     questionNum: 5,
-    question: attrQuestion,
-    choices: []
-  },
-  {
-    questionNum: 6,
     question: animalQuestion,
     choices: []
   }
@@ -85,6 +85,10 @@ class App extends Component {
       displayQuestions: true,
       answers: [
         {
+          questionNum: 0,
+          answerIdx: ''
+        },
+        {
           questionNum: 1,
           answerIdx: ''
         },
@@ -103,25 +107,21 @@ class App extends Component {
         {
           questionNum: 5,
           answerIdx: ''
-        },
-        {
-          questionNum: 6,
-          answerIdx: ''
         }
       ],
       houseIdx: ''
     }
   }
 
-  sortingHat = () => {
-
+  sortingHat = results => {
+    console.log(results);
   }
 
   render() {
     return (
       <div className="container">
         <button onClick={this.sortingHat}>Sort me into a house!</button>
-        <Questions display={this.state.displayQuestions} questions={questions} />
+        <Questions display={this.state.displayQuestions} questions={questions} onSubmit={this.sortingHat}/>
       </div>
     );
   }
